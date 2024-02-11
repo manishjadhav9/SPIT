@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-void merge(int arr[], int l, int m, int r) {
+void merge(int arr[], int l, int m, int r)
+{
     int i, j, k;
     int n1 = m - l + 1;
     int n2 = r - m;
@@ -17,32 +18,40 @@ void merge(int arr[], int l, int m, int r) {
     i = 0;
     j = 0;
     k = l;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
             arr[k] = L[i];
             i++;
-        } else {
+        }
+        else
+        {
             arr[k] = R[j];
             j++;
         }
         k++;
     }
 
-    while (i < n1) {
+    while (i < n1)
+    {
         arr[k] = L[i];
         i++;
         k++;
     }
 
-    while (j < n2) {
+    while (j < n2)
+    {
         arr[k] = R[j];
         j++;
         k++;
     }
 }
 
-void mergeSort(int arr[], int l, int r) {
-    if (l < r) {
+void mergeSort(int arr[], int l, int r)
+{
+    if (l < r)
+    {
         int m = l + (r - l) / 2;
 
         mergeSort(arr, l, m);
@@ -52,8 +61,10 @@ void mergeSort(int arr[], int l, int r) {
     }
 }
 
-void quickSort(int arr[], int low, int high) {
-    if (low < high) {
+void quickSort(int arr[], int low, int high)
+{
+    if (low < high)
+    {
         int pi = partition(arr, low, high);
 
         quickSort(arr, low, pi - 1);
@@ -61,12 +72,15 @@ void quickSort(int arr[], int low, int high) {
     }
 }
 
-int partition(int arr[], int low, int high) {
+int partition(int arr[], int low, int high)
+{
     int pivot = arr[high];
     int i = (low - 1);
 
-    for (int j = low; j <= high - 1; j++) {
-        if (arr[j] < pivot) {
+    for (int j = low; j <= high - 1; j++)
+    {
+        if (arr[j] < pivot)
+        {
             i++;
             swap(&arr[i], &arr[j]);
         }
@@ -76,20 +90,23 @@ int partition(int arr[], int low, int high) {
     return (i + 1);
 }
 
-void swap(int *a, int *b) {
+void swap(int *a, int *b)
+{
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-void main() {
+void main()
+{
     srand(time(NULL));
     FILE *fileptr;
     FILE *fileptr1;
     int n = 100000;
     fileptr = fopen("inp.txt", "w");
     int arr[n];
-    for (int j = 0; j < n; j++) {
+    for (int j = 0; j < n; j++)
+    {
         arr[j] = rand() % 100000 + 1;
         fprintf(fileptr, "%d\n", arr[j]);
     }
@@ -98,10 +115,12 @@ void main() {
     fileptr1 = fopen("time.csv", "w");
     printf("Block Size\tMerge Sort\tQuick Sort\n");
     fileptr = fopen("inp.txt", "r");
-    for (int p = 99; p < n; p = p + 100) {
+    for (int p = 99; p < n; p = p + 100)
+    {
         int array[p + 1];
         int array1[p + 1];
-        for (int j = 0; j < p; j++) {
+        for (int j = 0; j < p; j++)
+        {
             array[j] = arr[j];
             fscanf(fileptr, "%1d", &array1[j]);
         }
