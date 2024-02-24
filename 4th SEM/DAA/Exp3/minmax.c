@@ -1,96 +1,72 @@
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
-
-int max, min, max2, min2;
-
-void maxmin(int a[], int i, int j)
-{
-    int max1, min1, mid;
-    if (i == j)
-    {
-        max = min = a[i];
-    }
-    else
-    {
-        if (i == j - 1)
-        {
-            if (a[i] < a[j])
-            {
-                max = a[j];
-                min = a[i];
-            }
-            else
-            {
-                max = a[i];
-                min = a[j];
-            }
-        }
-        else
-        {
-            mid = (i + j) / 2;
-            maxmin(a, i, mid);
-            max1 = max;
-            min1 = min;
-            maxmin(a, mid + 1, j);
-            if (max < max1)
-                max = max1;
-            if (min > min1)
-                min = min1;
-        }
-    }
-}
-
-int maxmin1(int a[], int n)
-{
-    for (int i = 0; i < n; i++)
-    {
-        if (a[i] > max)
-        {
-            max = a[i];
-        }
-        if (a[i] < min)
-        {
-            min = a[i];
-        }
-    }
-    return max, min;
-}
-
+#include <time.h>
+#define ARRAY_SIZE 100000
+// Function prototypes
+void generateNumbers(int numbers[], int size);
+void minMaxDivideConquer(int numbers[], int start, int end, int *min, int *max);
+void minMaxNaive(int numbers[], int size, int *min, int *max);
 int main()
 {
-    FILE *p = fopen("min-max.csv", "w");
-    int i, num;
-    for (int num = 1000; num <= 100000; num += 100)
+    FILE *p = fopen("minmax.csv", "w");
+    fprintf(p, "Number, Time (Divide & Conquer), Time (Naive), Min, Max\n");
+    int numbers[ARRAY_SIZE];
+    int min_dc, max_dc, min_naive, max_naive;
+    // Generate 100,000 random integer numbers using rand()
+    generateNumbers(numbers, ARRAY_SIZE);
+    printf("Number, Time (Divide & Conquer), Time (Naive), Min, Max\n");
+    for (int i = 100; i <= ARRAY_SIZE; i += 100)
     {
-        int *a = (int *)malloc(num * sizeof(int));
-        int *a1 = (int *)malloc(num * sizeof(int));
-        for (int i = 0; i < num; i++)
-        {
-            a[i] = a1[i] = rand() % 100000 + 1;
-        }
+        clock_t start, end;
 
-        clock_t start, end, start1, end1;
-
-        max = a[0];
-        min = a[0];
-        max2 = a1[0];
-        min2 = a1[0];
-
+        // Divide and Conquer
         start = clock();
-        maxmin(a, 1, num);
+        minMaxDivideConquer(numbers, 0, i - 1, &min_dc, &max_dc);
         end = clock();
-        double time = (double)(end - start) / CLOCKS_PER_SEC;
-
-        start1 = clock();
-        maxmin1(a1, num);
-        end1 = clock();
-        double time1 = (double)(end1 - start1) / CLOCKS_PER_SEC;
-
-        fprintf(p, "%d,%lf,%lf", num, time, time1);
-        fprintf(p, "\n");
+        double time_dc = ((double)(end - start)) / CLOCKS_PER_SEC;
+        // Naive Approach
+        start = clock();
+        minMaxNaive(numbers, i, &min_naive, &max_naive);
+        end = clock();
+        double time_naive = ((double)(end - start)) / CLOCKS_PER_SEC;
+        printf("%d, %lf, %lf, %d, %d\n", i, time_dc, time_naive, min_dc, max_dc);
+        fprintf(p, "%d, %lf, %lf, %d, %d\n", i, time_dc, time_naive, min_dc, max_dc);
     }
-    fclose(p);
-    printf("done");
     return 0;
+}
+void generateNumbers(int numbers[], int size)
+{
+    for (int i = 0; i < size; ++i)
+    {
+        numbers[i] = rand(); // Using rand() for simplicity
+    }
+}
+void minMaxDivideConquer(int numbers[], int start, int end, int *min, int *max)
+{
+    if (start == end)
+    {
+        *min = *max = numbers[start];
+        return;
+    }
+    int mid = (start + end) / 2;
+    int min_left, max_left, min_right, max_right;
+    minMaxDivideConquer(numbers, start, mid, &min_left, &max_left);
+    minMaxDivideConquer(numbers, mid + 1, end, &min_right, &max_right);
+    *min = (min_left < min_right) ? min_left : min_right;
+    *max = (max_left > max_right) ? max_left : max_right;
+}
+void minMaxNaive(int numbers[], int size, int *min, int *max)
+{
+    *min = *max = numbers[0];
+    for (int i = 1; i < size; ++i)
+    {
+        if (numbers[i] < *min)
+        {
+            *min = numbers[i];
+        }
+        else if (numbers[i] > *max)
+        {
+            *max = numbers[i];
+        }
+    }
 }
