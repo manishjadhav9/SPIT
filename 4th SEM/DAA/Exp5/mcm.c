@@ -91,16 +91,6 @@ int main() {
         printf("\n");
     }
 
-    // Print parenthesizations
-    printf("\nParenthesizations:\n");
-    for (int i = 1; i < NUM_MATRICES; i++) {
-        for (int j = 2; j <= NUM_MATRICES; j++) {
-            if (i >= j) {
-                printf(" \t");
-            }
-        }
-        printf("\n");
-    }
 
     // Print time for Matrix Chain Multiplication
     printf("\nTime for Matrix Chain Multiplication: %.6f seconds\n", duration_mcm);
