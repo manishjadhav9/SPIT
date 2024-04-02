@@ -49,6 +49,9 @@ for k in range(5):
                 for y in range(m):
                     avail[y] += alloc[i][y]
                 f[i] = 1
+                break
+            
+    print("\nAfter allocation of P" + str(ans[ind - 1]) + " Available: " + str(avail))
 
 print("\nThe safe sequence for the program is as follows:")
 for i in range(n - 1):
