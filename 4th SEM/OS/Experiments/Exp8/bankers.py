@@ -1,4 +1,3 @@
-
 # 5  processes: P0, P1, P2, P3, P4
 n = 5  # Number of processes: P0, P1, P2, P3, P4
 m = 3  # Number of resources: A, B, C
@@ -30,8 +29,8 @@ for i in range(n):
     for j in range(m):
         need[i][j] = max[i][j] - alloc[i][j]
 
-# Display the Need Matrix
-print("\nNeed Matrix:")
+
+print("\nNeed Matrix calculated = (Need(i, j) = Max(i, j) - Allocation(i, j)):")
 for i in range(n):
     print(need[i])
 
