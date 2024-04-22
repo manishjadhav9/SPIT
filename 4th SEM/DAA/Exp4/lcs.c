@@ -62,21 +62,21 @@ void lcs(char *X, char *Y, int m, int n)
 
 int main()
 {
-  // char X[50], Y[50];
-  // printf("Enter first sequence: ");
-  // scanf("%s", X);
-  // printf("Enter second sequence: ");
-  // scanf("%s", Y);
-  // int m = strlen(X);
-  // int n = strlen(Y);
-  // lcs(X, Y, m, n);
-  // return 0;
-
-
-   char X[] = "AGGTAB";
-  char Y[] = "GXTXAYB";
+  char X[50], Y[50];
+  printf("Enter first sequence: ");
+  scanf("%s", X);
+  printf("Enter second sequence: ");
+  scanf("%s", Y);
   int m = strlen(X);
   int n = strlen(Y);
   lcs(X, Y, m, n);
   return 0;
+
+
+  //  char X[] = "AGGTAB";
+  // char Y[] = "GXTXAYB";
+  // int m = strlen(X);
+  // int n = strlen(Y);
+  // lcs(X, Y, m, n);
+  // return 0;
 }
