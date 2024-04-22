@@ -45,4 +45,44 @@ int main() {
     printf("\nOptimal Time for completing the product is: %d\n", optimalTime);
 
     return 0;
+
+    // int a[NUM_LINES][NUM_STATIONS], t[NUM_LINES][NUM_STATIONS - 1], e[NUM_LINES], x[NUM_LINES];
+
+    // // Input values for a
+    // printf("Enter values for a:\n");
+    // for (int i = 0; i < NUM_LINES; i++) {
+    //     printf("Line %d: ", i + 1);
+    //     for (int j = 0; j < NUM_STATIONS; j++) {
+    //         scanf("%d", &a[i][j]);
+    //     }
+    // }
+
+    // // Input values for t
+    // printf("Enter values for t:\n");
+    // for (int i = 0; i < NUM_LINES; i++) {
+    //     printf("Line %d: ", i + 1);
+    //     for (int j = 0; j < NUM_STATIONS - 1; j++) {
+    //         scanf("%d", &t[i][j]);
+    //     }
+    // }
+
+    // // Input values for e
+    // printf("Enter values for e:\n");
+    // for (int i = 0; i < NUM_LINES; i++) {
+    //     printf("", i + 1);
+    //     scanf("%d", &e[i]);
+    // }
+
+    // // Input values for x
+    // printf("Enter values for x:\n");
+    // for (int i = 0; i < NUM_LINES; i++) {
+    //     printf("", i + 1);
+    //     scanf("%d", &x[i]);
+    // }
+
+    // // Calculate and display the optimal time for completing the product
+    // int optimalTime = productAssembly(a, t, e, x);
+    // printf("\nOptimal Time for completing the product is: %d\n", optimalTime);
+
+    // return 0;
 }
