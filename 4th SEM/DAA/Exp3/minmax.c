@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #define ARRAY_SIZE 100000
+// #define ARRAY_SIZE 10
 // Function prototypes
 void generateNumbers(int numbers[], int size);
 void minMaxDivideConquer(int numbers[], int start, int end, int *min, int *max);
@@ -10,12 +11,16 @@ int main()
 {
     FILE *p = fopen("minmax.csv", "w");
     fprintf(p, "Number, Time (Divide & Conquer), Time (Naive), Min, Max\n");
+
+     // Hard-coded array with 10 values
+    // int numbers[ARRAY_SIZE] = {54, 21, 87, 63, 91, 37, 20, 48, 66, 15};
+
     int numbers[ARRAY_SIZE];
     int min_dc, max_dc, min_naive, max_naive;
-    // Generate 100,000 random integer numbers using rand()
+    //Generate 100,000 random integer numbers using rand()
     generateNumbers(numbers, ARRAY_SIZE);
     printf("Number, Time (Divide & Conquer), Time (Naive), Min, Max\n");
-    for (int i = 100; i <= ARRAY_SIZE; i += 100)
+    for (int i = 10; i <= ARRAY_SIZE; i += 10)
     {
         clock_t start, end;
 
