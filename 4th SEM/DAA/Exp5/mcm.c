@@ -90,8 +90,6 @@ int main() {
         }
         printf("\n");
     }
-
-
     // Print time for Matrix Chain Multiplication
     printf("\nTime for Matrix Chain Multiplication: %.6f seconds\n", duration_mcm);
 
@@ -124,3 +122,4 @@ int main() {
 
     return 0;
 }
+
