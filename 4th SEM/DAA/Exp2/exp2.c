@@ -97,7 +97,7 @@ void swap(int *a, int *b)
     *b = temp;
 }
 
-void main()
+int main()
 {
     srand(time(NULL));
     FILE *fileptr;
