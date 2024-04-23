@@ -150,12 +150,12 @@ void lcs(char *X, char *Y, int m, int n)
 
 int main()
 {
-  //  char X[] = "AGGTAB";
-  // char Y[] = "GXTXAYB";
-  // int m = strlen(X);
-  // int n = strlen(Y);
-  // lcs(X, Y, m, n);
-  // return 0;
+   char X[] = "AGGTAB";
+  char Y[] = "GXTXAYB";
+  int m = strlen(X);
+  int n = strlen(Y);
+  lcs(X, Y, m, n);
+  return 0;
 }
 
 
