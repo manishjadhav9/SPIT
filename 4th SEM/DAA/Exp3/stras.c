@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define MAX_SIZE 128
+#define MAX_SIZE 10
 
 // Function to multiply two matrices using the normal method
 void normalMatrixMultiplication(int A[MAX_SIZE][MAX_SIZE], int B[MAX_SIZE][MAX_SIZE], int C[MAX_SIZE][MAX_SIZE], int n) {
@@ -39,7 +39,7 @@ void subtract(int n, int A[MAX_SIZE][MAX_SIZE], int B[MAX_SIZE][MAX_SIZE], int C
 
 // Function to perform Strassen's matrix multiplication
 void strassenMatrixMultiplication(int A[MAX_SIZE][MAX_SIZE], int B[MAX_SIZE][MAX_SIZE], int C[MAX_SIZE][MAX_SIZE], int n) {
-    if (n <= 64) {
+    if (n <= 8) {
         normalMatrixMultiplication(A, B, C, n);
         return;
     }
@@ -132,6 +132,18 @@ double time_elapsed(struct timespec start, struct timespec end) {
     return (double)(end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec) / 1e9;
 }
 
+// Function to print a matrix
+void printMatrix(int A[MAX_SIZE][MAX_SIZE], int n) {
+    int i, j;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            printf("%d ", A[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
 int main() {
     int A[MAX_SIZE][MAX_SIZE], B[MAX_SIZE][MAX_SIZE], C[MAX_SIZE][MAX_SIZE];
     struct timespec start, end;
@@ -163,10 +175,15 @@ int main() {
 
         printf("Matrix Size: %d,       Normal Multiplication Time: %f seconds,            Strassen Multiplication Time: %f seconds\n", n, time_normal, time_strassen);
         fprintf(fptr, "%d,%f,%f\n", n, time_normal, time_strassen);
+
+        // Print the result matrices
+        printf("Result of Normal Matrix Multiplication:\n");
+        printMatrix(C, n);
+        printf("Result of Strassen's Matrix Multiplication:\n");
+        printMatrix(C, n);
     }
 
     fclose(fptr);
 
     return 0;
 }
-
