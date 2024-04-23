@@ -64,7 +64,7 @@ int main() {
     int dims[NUM_MATRICES + 1]; // +1 to include the dimensions of result matrix
     printf("Random Dimensions for Matrices:\n");
     for (int i = 0; i <= NUM_MATRICES; i++) {
-        dims[i] = rand() % 32 + 15; // Random dimensions between 15 and 46
+        dims[i] = rand() % 32 + 15; 
         printf("M%d: %2d x %2d\n", i, dims[i-1], dims[i]);
     }
 

@@ -97,42 +97,46 @@ void swap(int *a, int *b)
     *b = temp;
 }
 
-int main()
-{
-    srand(time(NULL));
-    FILE *fileptr;
-    FILE *fileptr1;
-    int n = 100000;
-    fileptr = fopen("inp.txt", "w");
-    int arr[n];
-    for (int j = 0; j < n; j++)
-    {
-        arr[j] = rand() % 100000 + 1;
-        fprintf(fileptr, "%d\n", arr[j]);
-    }
-    fclose(fileptr);
+// int main()
+// {
+//     srand(time(NULL));
+//     FILE *fileptr;
+//     FILE *fileptr1;
+//     int n = 100000;
+//     fileptr = fopen("inp.txt", "w");
+//     int arr[n];
+//     for (int j = 0; j < n; j++)
+//     {
+//         arr[j] = rand() % 100000 + 1;
+//         fprintf(fileptr, "%d\n", arr[j]);
+//     }
+//     fclose(fileptr);
 
-    fileptr1 = fopen("time.csv", "w");
-    printf("Block Size\tMerge Sort\tQuick Sort\n");
-    fileptr = fopen("inp.txt", "r");
-    for (int p = 99; p < n; p = p + 100)
-    {
-        int array[p + 1];
-        int array1[p + 1];
-        for (int j = 0; j < p; j++)
-        {
-            array[j] = arr[j];
-            fscanf(fileptr, "%1d", &array1[j]);
-        }
-        clock_t begin = clock();
-        mergeSort(array, 0, p);
-        clock_t mid = clock();
-        quickSort(array1, 0, p);
-        clock_t end = clock();
-        double time_spent = (double)(mid - begin);
-        double time_spent1 = (double)(end - mid);
-        printf("%d\t%lf\t%lf\n", p + 1, time_spent, time_spent1);
-        fprintf(fileptr1, "%d,%lf,%lf\n", p + 1, time_spent, time_spent1);
-    }
-    printf("\n");
-}
+//     fileptr1 = fopen("time.csv", "w");
+//     printf("Block Size\tMerge Sort\tQuick Sort\n");
+//     fileptr = fopen("inp.txt", "r");
+//     for (int p = 99; p < n; p = p + 100)
+//     {
+//         int array[p + 1];
+//         int array1[p + 1];
+//         for (int j = 0; j < p; j++)
+//         {
+//             array[j] = arr[j];
+//             fscanf(fileptr, "%1d", &array1[j]);
+//         }
+//         clock_t begin = clock();
+//         mergeSort(array, 0, p);
+//         clock_t mid = clock();
+//         quickSort(array1, 0, p);
+//         clock_t end = clock();
+//         double time_spent = (double)(mid - begin);
+//         double time_spent1 = (double)(end - mid);
+//         printf("%d\t%lf\t%lf\n", p + 1, time_spent, time_spent1);
+//         fprintf(fileptr1, "%d,%lf,%lf\n", p + 1, time_spent, time_spent1);
+//     }
+//     printf("\n");
+// }
+
+
+
+
