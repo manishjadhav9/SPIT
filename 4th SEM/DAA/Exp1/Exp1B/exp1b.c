@@ -36,7 +36,7 @@ void selectSort(int *a, int n)
     }
   }
 }
-void main()
+int main()
 {
   srand(time(NULL));
   FILE *fileptr;
