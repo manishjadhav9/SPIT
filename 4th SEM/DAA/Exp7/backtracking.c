@@ -81,13 +81,13 @@ bool isSafe(int row, int col) {
 }
 
 void solveNQueens(int n, int row) {
-    // Base case: If all queens are placed, print the solution
+    // If all queens are placed, print the solution
     if (row == n) {
         printNQueensSolution(n);
         solutionCount++;
         return;
     }
-    // Try placing a queen in each column of the current row
+    // placing a queen in each column of the current row
     for (int col = 0; col < n; col++) {
         if (isSafe(row, col)) {
             board[row] = col;
@@ -105,7 +105,6 @@ void printSubset(int set[], int size) {
 }
 
 void solveSubsetSum(int set[], int n, int targetSum, int index, int subset[], int subsetIndex) {
-    // Base case: If all elements of the set are considered, check if subset sum is equal to targetSum
     if (index == n) {
         int sum = 0;
         for (int i = 0; i < subsetIndex; i++) {
@@ -116,9 +115,7 @@ void solveSubsetSum(int set[], int n, int targetSum, int index, int subset[], in
         }
         return;
     }
-    // Include the current element in the subset and recurse
     subset[subsetIndex] = set[index];
     solveSubsetSum(set, n, targetSum, index + 1, subset, subsetIndex + 1);
-    // Exclude the current element from the subset and recurse
     solveSubsetSum(set, n, targetSum, index + 1, subset, subsetIndex);
 }
