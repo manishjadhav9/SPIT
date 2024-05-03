@@ -12,7 +12,6 @@ int main()
     FILE *p = fopen("minmax.csv", "w");
     fprintf(p, "Number, Time (Divide & Conquer), Time (Naive), Min, Max\n"); 
 
-    // Hard-coded array with 10 values
     int numbers[ARRAY_SIZE] = {54, 21, 87, 63, 91, 37, 20, 48, 66, 15};
     
     // int numbers[ARRAY_SIZE]; 

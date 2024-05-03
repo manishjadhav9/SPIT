@@ -57,6 +57,18 @@ void matrixChainMultiplication(int dims[], int n, int **m, int **c) {
     }
 }
 
+// Function to print parenthesization
+void printParenthesis(int i, int j, int **c) {
+    if (i == j) {
+        printf("M%d", i);
+    } else {
+        printf("(");
+        printParenthesis(i, c[i][j], c);
+        printParenthesis(c[i][j] + 1, j, c);
+        printf(")");
+    }
+}
+
 int main() {
     srand(time(NULL));
 
@@ -72,11 +84,9 @@ int main() {
     int ***matrices = (int ***)malloc(NUM_MATRICES * sizeof(int **));
     generateRandomMatrices(matrices, dims);
 
-    // Allocate memory for storing optimal solutions and parenthesizations
     int **m = allocateMatrix(NUM_MATRICES + 1, NUM_MATRICES + 1);
     int **c = allocateMatrix(NUM_MATRICES + 1, NUM_MATRICES + 1);
 
-    // Perform Matrix Chain Multiplication and measure time
     clock_t start = clock();
     matrixChainMultiplication(dims, NUM_MATRICES, m, c);
     clock_t end = clock();
@@ -90,27 +100,14 @@ int main() {
         }
         printf("\n");
     }
-    // Print time for Matrix Chain Multiplication
+
+    printf("\nOptimal Parenthesization:\n");
+    printParenthesis(1, NUM_MATRICES, c);
+    printf("\n");
+
     printf("\nTime for Matrix Chain Multiplication: %.6f seconds\n", duration_mcm);
 
-    // Print the cost matrix and the k matrix
-    printf("\nCost Matrix:\n");
-    for (int i = 1; i <= NUM_MATRICES; i++) {
-        for (int j = 1; j <= NUM_MATRICES; j++) {
-            printf("%6d", m[i][j]);
-        }
-        printf("\n");
-    }
-    
-    printf("\nK Matrix:\n");
-    for (int i = 1; i <= NUM_MATRICES; i++) {
-        for (int j = 1; j <= NUM_MATRICES; j++) {
-            printf("%6d", c[i][j]);
-        }
-        printf("\n");
-    }
 
-    // Free allocated memory for matrices
     for (int i = 0; i < NUM_MATRICES; i++) {
         freeMatrix(matrices[i], dims[i]);
     }
@@ -122,4 +119,3 @@ int main() {
 
     return 0;
 }
-

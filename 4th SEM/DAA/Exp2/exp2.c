@@ -74,10 +74,10 @@ void quickSort(int arr[], int low, int high)
 
 int partition(int arr[], int low, int high)
 {
-    int pivot = arr[high];
+    int pivot = arr[low];
     int i = (low - 1);
 
-    for (int j = low; j <= high - 1; j++)
+    for (int j = low; j <= high; j++)
     {
         if (arr[j] < pivot)
         {
@@ -99,42 +99,49 @@ void swap(int *a, int *b)
 
 int main()
 {
-    srand(time(NULL));
-    FILE *fileptr;
-    FILE *fileptr1;
-    int n = 100000;
-    fileptr = fopen("inp.txt", "w");
+
+
+     srand(time(NULL));
+    int n = 100;
     int arr[n];
+
     for (int j = 0; j < n; j++)
     {
         arr[j] = rand() % 100000 + 1;
-        fprintf(fileptr, "%d\n", arr[j]);
     }
-    fclose(fileptr);
 
-    fileptr1 = fopen("time.csv", "w");
-    printf("Block Size\tMerge Sort\tQuick Sort\n");
-    fileptr = fopen("inp.txt", "r");
-    for (int p = 99; p < n; p = p + 100)
+    printf("Unsorted array:\n");
+    for (int j = 0; j < n; j++)
     {
-        int array[p + 1];
-        int array1[p + 1];
-        for (int j = 0; j < p; j++)
-        {
-            array[j] = arr[j];
-            fscanf(fileptr, "%1d", &array1[j]);
-        }
-        clock_t begin = clock();
-        mergeSort(array, 0, p);
-        clock_t mid = clock();
-        quickSort(array1, 0, p);
-        clock_t end = clock();
-        double time_spent = (double)(mid - begin);
-        double time_spent1 = (double)(end - mid);
-        printf("%d\t%lf\t%lf\n", p + 1, time_spent, time_spent1);
-        fprintf(fileptr1, "%d,%lf,%lf\n", p + 1, time_spent, time_spent1);
+        printf("%d ", arr[j]);
     }
     printf("\n");
+
+    clock_t start_merge = clock();
+    mergeSort(arr, 0, n - 1);
+    clock_t end_merge = clock();
+    double time_merge = ((double)(end_merge - start_merge)) / CLOCKS_PER_SEC;
+
+    printf("Sorted array using merge sort:\n");
+    for (int j = 0; j < n; j++)
+    {
+        printf("%d ", arr[j]);
+    }
+    printf("\nTime taken for merge sort: %lf seconds\n", time_merge);
+
+    clock_t start_quick = clock();
+    quickSort(arr, 0, n - 1);
+    clock_t end_quick = clock();
+    double time_quick = ((double)(end_quick - start_quick)) / CLOCKS_PER_SEC;
+
+    printf("Sorted array using quick sort:\n");
+    for (int j = 0; j < n; j++)
+    {
+        printf("%d ", arr[j]);
+    }
+    printf("\nTime taken for quick sort: %lf seconds\n", time_quick);
+
+    return 0;
 }
 
 

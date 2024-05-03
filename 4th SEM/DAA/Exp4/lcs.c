@@ -8,7 +8,7 @@ int max(int a, int b)
 }
 
 // Function to find the length of longest common subsequence
-// and print one of the common subsequences
+// and print one of the common subsequences along with its length
 void lcs(char *X, char *Y, int m, int n)
 {
   int L[m + 1][n + 1];
@@ -28,37 +28,41 @@ void lcs(char *X, char *Y, int m, int n)
     }
   }
 
-  // Following code is used to print one of the common subsequence
   int index = L[m][n];
   char lcs[index + 1];
   lcs[index] = '\0';
 
-  // Start from the right-most-bottom-most corner and
-  // one by one store characters in lcs[]
   i = m;
   j = n;
   while (i > 0 && j > 0)
   {
-    // If current character in X[] and Y are same, then
-    // current character is part of LCS
     if (X[i - 1] == Y[j - 1])
     {
-      lcs[index - 1] = X[i - 1]; // Put current character in result
+      lcs[index - 1] = X[i - 1]; 
       i--;
       j--;
-      index--; // reduce values of i, j and index
+      index--; 
     }
-    // If not same, then find the larger of two and
-    // go in the direction of larger value
     else if (L[i - 1][j] > L[i][j - 1])
       i--;
     else
       j--;
   }
 
-  // Print the lcs
   printf("Longest Common Subsequence: %s\n", lcs);
+  printf("Length of Longest Common Subsequence: %d\n", L[m][n]);
+  printf("Trace Path:\n");
+  for (int a = 0; a <= m; a++)
+  {
+    for (int b = 0; b <= n; b++)
+    {
+      printf("%d ", L[a][b]);
+    }
+    printf("\n");
+  }
 }
+
+
 
 int main()
 {
@@ -71,6 +75,7 @@ int main()
   int n = strlen(Y);
   lcs(X, Y, m, n);
   return 0;
+
 
 
   //  char X[] = "AGGTAB";

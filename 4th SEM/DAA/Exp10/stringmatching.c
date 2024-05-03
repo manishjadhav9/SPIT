@@ -50,28 +50,28 @@ void KMPSearch(char *pat, char *txt) {
 }
 
 int main() {
-    // char txt[100], pat[100];
+    char txt[100], pat[100];
 
-    // printf("Enter the text: ");
-    // fgets(txt, sizeof(txt), stdin);
-    // txt[strcspn(txt, "\n")] = '\0';  // Remove newline character
+    printf("Enter the text: ");
+    fgets(txt, sizeof(txt), stdin);
+    txt[strcspn(txt, "\n")] = '\0';  // Remove newline character
 
-    // printf("Enter the pattern to search: ");
-    // fgets(pat, sizeof(pat), stdin);
-    // pat[strcspn(pat, "\n")] = '\0';  // Remove newline character
-
-    // printf("Text: %s\n", txt);
-    // printf("Pattern: %s\n", pat);
-    // KMPSearch(pat, txt);
-    // return 0;
-
-    char txt[] = "ABABDABACDABABCABAB";
-    char pat[] = "ABABCABAB";
+    printf("Enter the pattern to search: ");
+    fgets(pat, sizeof(pat), stdin);
+    pat[strcspn(pat, "\n")] = '\0';  // Remove newline character
 
     printf("Text: %s\n", txt);
     printf("Pattern: %s\n", pat);
     KMPSearch(pat, txt);
     return 0;
+
+    // char txt[] = "ABABDABACDABABCABAB";
+    // char pat[] = "ABABCABAB";
+
+    // printf("Text: %s\n", txt);
+    // printf("Pattern: %s\n", pat);
+    // KMPSearch(pat, txt);
+    // return 0;
 }
 
 
