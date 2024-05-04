@@ -127,7 +127,7 @@ int main()
     {
         printf("%d ", arr[j]);
     }
-    printf("\nTime taken for merge sort: %lf seconds\n", time_merge);
+    printf("\nTime takenzz for merge sort: %lf seconds\n", time_merge);
 
     clock_t start_quick = clock();
     quickSort(arr, 0, n - 1);
