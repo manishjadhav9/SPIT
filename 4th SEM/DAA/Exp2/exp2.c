@@ -102,7 +102,7 @@ int main()
 
 
      srand(time(NULL));
-    int n = 100;
+    int n = 2500;
     int arr[n];
 
     for (int j = 0; j < n; j++)
@@ -127,7 +127,7 @@ int main()
     {
         printf("%d ", arr[j]);
     }
-    printf("\nTime takenzz for merge sort: %lf seconds\n", time_merge);
+    printf("\nTime taken for merge sort: %lf seconds\n", time_merge);
 
     clock_t start_quick = clock();
     quickSort(arr, 0, n - 1);

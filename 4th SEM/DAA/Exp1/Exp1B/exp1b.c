@@ -42,7 +42,7 @@ void selectSort(int *a, int n)
 int main()
 {
     srand(time(NULL));
-    int n = 100;
+    int n = 2500;
     int arr[n];
     for (int j = 0; j < n; j++)
     {
@@ -82,7 +82,7 @@ int main()
     printf("\nSelection Sort:\n");
     for (int i = 0; i < n; i++)
     {
-        printf("%d ", array1[i]);
+        printf("%d", array1[i]);
     }
     printf("\nTime taken: %lf seconds\n", time_spent1);
 
