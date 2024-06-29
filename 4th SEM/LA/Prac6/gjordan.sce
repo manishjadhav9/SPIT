@@ -1,6 +1,6 @@
-A = [1 1 1;1 2 3;1 3 2]
+A = [1 3 2;2 7 7; 2 5 2]
 disp(A);
-B = [3;0;3]
+B = [2;-1;7]
 disp(B);
 C = [A,B]
 disp(C);
@@ -16,13 +16,15 @@ for i=1:n
     disp(C)
 end
 
-z=C(3,4);
-y=C(2,4)-C(2,3)*z;
-x=C(1,4)-C(1,3)*z-C(1,2)*y;
+for i=n:-1:2
+    for j=1:n-1
+        C(j,:)=C(j,:)-C(j,i)*C(i,:);
+    end
+end
 
-printf("X=");
-disp(x);
-printf("Y=");
-disp(y);
-printf("Z=");
-disp(z);
+disp("X=");
+disp(C(1,4));
+disp("y=");
+disp(C(2,4));
+disp("z=");
+disp(C(3,4));
