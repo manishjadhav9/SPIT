@@ -1,57 +1,53 @@
 boat_side = "Right"
-missionary_on_right = 3
-cannibals_on_right = 3
-missionary_on_left = 0
-cannibals_on_left = 0
+mis_right = 3
+can_right = 3
+mis_left = 0
+can_left = 0
 
 def print_state():
-    print(f"Missionaries on left = {missionary_on_left} Cannibals on left = {cannibals_on_left}", end='')
-    print(" |-----Boat| " if boat_side == "Right" else " |Boat-----| ", end='')
-    print(f"Missionaries = {missionary_on_right} Cannibals on right = {cannibals_on_right}")
+    print(f"mis_left = {mis_left} can_left = {can_left}", end='')
+    print(" |-----b| " if boat_side == "Right" else " |b-----| ", end='')
+    print(f"mis = {mis_right} can_right = {can_right}")
 
 print_state()
 
 while True:
-    missionary = int(input(f"Enter number of Missionary in boat on {boat_side}: "))
-    cannibals = int(input(f"Enter number of Cannibals in boat on {boat_side}: "))
+    missionary = int(input(f"number of Missionary in boat {boat_side}: "))
+    cannibals = int(input(f"number of Cannibals in boat {boat_side}: "))
     
-    # Condition for peoples on boat should be 1 or 2 only.
     if (missionary + cannibals) not in [1, 2]:
         print("Invalid move: Total people in boat must be 1 or 2")
         continue
     
     if boat_side == "Right":
-        if missionary > missionary_on_right or cannibals > cannibals_on_right:
+        if missionary > mis_right or cannibals > can_right:
             print("Invalid move: Not enough people on the right side")
             continue
         
-        missionary_on_right -= missionary
-        cannibals_on_right -= cannibals
-        missionary_on_left += missionary
-        cannibals_on_left += cannibals
+        mis_right -= missionary
+        can_right -= cannibals
+        mis_left += missionary
+        can_left += cannibals
         boat_side = "Left"
     else:  
-        if missionary > missionary_on_left or cannibals > cannibals_on_left:
+        if missionary > mis_left or cannibals > can_left:
             print("Invalid move: Not enough people on the left side")
-            continue
-        
-        missionary_on_right += missionary
-        cannibals_on_right += cannibals
-        missionary_on_left -= missionary
-        cannibals_on_left -= cannibals
+            continue        
+        mis_right += missionary
+        can_right += cannibals
+        mis_left -= missionary
+        can_left -= cannibals
         boat_side = "Right"
     
     print_state()
     
-    # These condition checks whether condition for win is not satisfied i.e. you loose
-    if (missionary_on_right != 0 and missionary_on_right < cannibals_on_right) or \
-       (missionary_on_left != 0 and missionary_on_left < cannibals_on_left):
-        print("YOU LOSE")
+    if (mis_right != 0 and mis_right < can_right) or \
+       (mis_left != 0 and mis_left < can_left):
+        print("YOU LOOSE THE MATCH")
         break
     
-    # These condition checks whether condition for win is satisfied i.e. you win
-    if missionary_on_left == 3 and cannibals_on_left == 3:
-        print("YOU WIN")
+    if mis_left == 3 and can_left == 3:
+        print("YOU WON THE MATCH")
         break
 
-print("GAME OVER")
+print("GAME ENDS")
