@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "numpy": "^0.0.1",
+    "pandas": "^0.0.3",
+    "rollup": "^4.26.0",
+    "scikit-learn": "^0.1.0"
+  }
+}
