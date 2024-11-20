@@ -7,7 +7,7 @@ import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import { useTheme, useMediaQuery } from '@mui/material';
-import { green } from '@mui/material/colors';
+import { orange } from '@mui/material/colors';
 import HomeIcon from '@mui/icons-material/Home';
 
 // Font Awesome Icons
@@ -57,7 +57,7 @@ const Sidebar = ({ onMobileClose, openMobile }) => {
                             <Avatar
                                 variant='rounded'
                                 sx={{
-                                    backgroundColor: green[600],
+                                    backgroundColor: orange[600],
                                     marginRight: '15px',
                                     height: 52,
                                     width: 52

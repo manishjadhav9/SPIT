@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { useTheme, useMediaQuery } from '@mui/material';
-import { green } from '@mui/material/colors';
+import { orange } from '@mui/material/colors';
 
 const EditorHeader = () => {
     const theme = useTheme();
@@ -26,7 +26,7 @@ const EditorHeader = () => {
                 >
                     Fill the 
                     {' '}
-                    <span style={{ color: green[600] }}>
+                    <span style={{ color: orange[600] }}>
                     Detail 
                     </span>
                     {' '}

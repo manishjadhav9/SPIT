@@ -9,7 +9,8 @@ import IconButton from '@mui/material/IconButton';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material';
-import { green } from '@mui/material/colors';
+// import { orange } from '@mui/material/colors';
+import { orange } from '@mui/material/colors';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom';
@@ -47,7 +48,7 @@ const Header = ({ onSidebarMobileOpen }) => {
                                 <Avatar
                                     variant='rounded'
                                     sx={{
-                                        backgroundColor: green[600],
+                                        backgroundColor: orange[600],
                                         height: 52,
                                         width: 52,
                                         marginRight: '15px'

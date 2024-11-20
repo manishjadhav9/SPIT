@@ -8,10 +8,10 @@ const theme = createTheme({
             paper: 'rgb(35, 49, 68)',
         },
         primary: {
-            main: 'rgb(67, 160, 72)',
-            light: 'rgb(163, 191, 243)',
-            dark: 'rgb(31, 102, 239)',
-            contrastText: 'rgb(235, 234, 239)',
+            main: 'rgb(255, 87, 34)', // A vibrant orange for the main color
+            light: 'rgb(255, 138, 101)', // A lighter shade of orange
+            dark: 'rgb(191, 54, 12)', // A darker shade of orange
+            contrastText: 'rgb(255, 255, 255)', // White for contrast
         },
         secondary: {
             main: 'rgba(255, 241, 118, 0.7)',
